@@ -4,8 +4,12 @@ import theme from './theme';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: theme.colors.light,
+  },
+  androidSafeArea: {
+    // flex: 1,
     backgroundColor: theme.colors.light,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
