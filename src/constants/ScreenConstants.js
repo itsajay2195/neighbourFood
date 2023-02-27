@@ -1,6 +1,7 @@
 export const LOGGED_IN_SCREEN_NAME={
     home:"Home",
-    profile:"profile",
+    profile:"Profile",
+    itemDetails:"ItemDetails"
 }
 
 export const AUTH_SCREEN_NAME={
