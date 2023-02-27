@@ -8,71 +8,62 @@ import Tags from './Tags';
 const FeedListItem = () => {
   return (
     <View
-      style={{
-        margin: 10,
-        padding: 15,
-        backgroundColor: theme.colors.white,
-        flex: 0.7,
-        overflow: 'hidden',
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-        borderRadius:20
-      }}>
-      <View style={{flex: 0.1, flexDirection: 'row', paddingVertical:5}}>
+      style={styles.container}>
+      <View style={styles.userInfoWarapper}>
         <View
-          style={{height: 40, width: 40, borderRadius: 50, overflow: 'hidden'}}>
+          style={styles.userAvaterWrapper}>
           <Image
-            style={{height: '100%', width: '100%'}}
+            style={styles.userAvatarStyle}
             source={{
               uri: 'https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=',
             }}
           />
         </View>
 
-        <View style={{flex: 1, flexDirection: 'column', paddingHorizontal: 5}}>
-          <Text style={{color:"black", fontFamily: 'sans-serif', fontSize:theme.fontSizes.medium, fontWeight:'bold'}}>Prabu </Text>
-          <Text style={{fontFamily: 'sans-serif-condensed', fontSize:12}}>5 min ago - Chitlapakkam</Text>
+        <View style={styles.userNameSectionWrapper}>
+          <Text
+            style={styles.userNameStyle}>
+            Prabu{' '}
+          </Text>
+          <Text style={styles.userPostDescStlye}>
+            5 min ago - Chitlapakkam
+          </Text>
         </View>
         {/* //avatarStyl
             //username */}
       </View>
 
-      <View style={{flex: 0.8, display: 'flex', flexDirection: 'column', paddingVertical:10}}>
-        <View style={{paddingVertical: 2}}>
-            <Text style={{color:"black",fontFamily: 'sans-serif', fontSize:theme.fontSizes.medium, fontWeight:'bold'}}>Pancake</Text>
+      <View
+        style={styles.bodyWrapper}>
+        <View style={styles.contentWrapper}>
+          <View style={styles.leftContentWrapper}>
+      
+              <Text
+                style={styles.itemNameTextStyle}>
+                Pancake
+              </Text>
+     
+            <Text numberOfLines={2}>
+              Eggless pancake, 5 in numbers topped with some berries and maple
+              syrup.
+            </Text>
+          </View>
+          <View
+            style={styles.contentImageWrapper}>
+            <Image
+              style={styles.contentImageStyle}
+              source={{
+                uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              }}
+            />
+          </View>
         </View>
 
-        <View style={{paddingVertical: 2}}>
-          <Text numberOfLines={2}>
-            Eggless pancake, 5 in numbers topped with some berries and maple syrup.
-          </Text>
-        </View>
-
-        <View style={{flexDirection: 'row', paddingVertical: 10}}>
+        <View style={styles.tagsWrapper}>
           <Tags label="#food" onPress={() => console.log('Tag 1 pressed')} />
           <Tags label="#english" onPress={() => console.log('Tag 1 pressed')} />
         </View>
 
-        <View
-          style={{
-            height: 220,
-            width: '100%',
-            overflow: 'hidden',
-            borderRadius: 20,
-          }}>
-          <Image
-            style={{height: "100%", width: '100%'}}
-            source={{
-              uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-            }}
-          />
-        </View>
         {/* //title
             //descrption 
             //https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
@@ -82,12 +73,7 @@ const FeedListItem = () => {
       </View>
 
       <View
-        style={{
-          flex: 0.1,
-          padding: 5,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
+        style={styles.indulgenceSectionWrapper}>
         <FavouriteIcon isFavourite={true} />
         <CommentIconWithCount commentCount={10} />
       </View>
@@ -96,3 +82,65 @@ const FeedListItem = () => {
 };
 
 export default FeedListItem;
+
+const styles = StyleSheet.create({
+  container:{
+    margin: 10,
+    padding: 15,
+    backgroundColor: theme.colors.white,
+    flex: 0.7,
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 20,
+  },
+  userInfoWarapper:{flex: 0.1, flexDirection: 'row', paddingVertical: 5},
+  userAvaterWrapper:{height: 40, width: 40, borderRadius: 50, overflow: 'hidden'},
+  userAvatarStyle:{height: '100%', width: '100%'},
+  userNameSectionWrapper:{flex: 1, flexDirection: 'column', paddingHorizontal: 5}, 
+  userNameStyle:{
+    color: 'black',
+    fontFamily: 'sans-serif',
+    fontSize: theme.fontSizes.medium,
+    fontWeight: 'bold',
+  },
+  userPostDescStlye:{fontFamily: 'sans-serif-condensed', fontSize: 12},
+  bodyWrapper:{
+    flex: 0.8,
+    display: 'flex',
+    flexDirection: 'column',
+    paddingVertical: 10,
+  },
+  contentWrapper:{paddingVertical: 2, flexDirection: 'row', flex: 1,},
+  leftContentWrapper:{flex: 0.7, justifyContent: 'center'},
+  headerWrapper:{paddingVertical: 2},
+  itemNameTextStyle:{
+    color: 'black',
+    fontFamily: 'sans-serif',
+    fontSize: theme.fontSizes.medium,
+    fontWeight: 'bold',
+  },
+  contentImageWrapper:{
+    flex: 0.3,
+    height: 100,
+    width: '100%',
+    justifyContent:'center',
+    alignItems:'center',
+    overflow: 'hidden',
+    borderRadius: 20,
+  },
+  contentImageStyle:{height: '100%', width: '100%'},
+  tagsWrapper:{flexDirection: 'row', paddingVertical: 10},
+  indulgenceSectionWrapper:{
+    flex: 0.1,
+    padding: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+  }
+});
