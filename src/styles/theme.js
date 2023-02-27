@@ -11,7 +11,8 @@ export default {
       white:"#FFFFFF",
       red:"#ff0000",
       blue:"#0000FF",
-      grey:"#808080"
+      grey:"#808080",
+      blueSecondary:"#8FB1CC"
     },
     fontSizes: {
       small: 12,

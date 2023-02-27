@@ -1,10 +1,11 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import theme from '../styles/theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import SearchBar from './SearchBar';
+import { LOGGED_IN_SCREEN_NAME } from '../constants/ScreenConstants';
 
-const Header = () => {
+const Header = ({navigation}) => {
   const handleSearch = text => {
     setSearchQuery(text);
     // Perform search logic here
@@ -13,7 +14,7 @@ const Header = () => {
     <View style={styles.container}>
       <View style={{flex: 0.1, alignItems:'center'}}>
         <View style={styles.iconWrapper}>
-          <Icon name="form" size={15} color="blue" />
+          <Icon  name="form" size={15} color="blue" />
         </View>
       </View>
 
@@ -22,14 +23,14 @@ const Header = () => {
       </View>
 
       <View style={{flex: 0.1,  alignItems:'center'}}>
-        <View style={styles.avatarWrapper}>
+        <TouchableOpacity onPress={()=>navigation.navigate(LOGGED_IN_SCREEN_NAME.profile)} style={styles.avatarWrapper}>
           <Image
             style={styles.avatarStyle}
             source={{
               uri: 'https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=',
             }}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

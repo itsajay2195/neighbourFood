@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: theme.colors.light,
   },
   androidSafeArea: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: theme.colors.light,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },

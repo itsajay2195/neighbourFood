@@ -9,7 +9,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={{backgroundColor: theme.colors.light, flex: 1}}>
-        <Header />
+        <Header navigation={navigation} />
         <ScrollView>
           <FeedListItem  navigation={navigation}/>
           <FeedListItem  navigation={navigation}/>
