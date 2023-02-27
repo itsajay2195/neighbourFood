@@ -12,8 +12,12 @@ const HomeScreen = ({navigation}) => {
         <Header />
         <ScrollView>
           <FeedListItem  navigation={navigation}/>
+          <FeedListItem  navigation={navigation}/>
+          <FeedListItem  navigation={navigation}/>
+          <FeedListItem  navigation={navigation}/>
+          <FeedListItem  navigation={navigation}/>
+          <FeedListItem  navigation={navigation}/>
 
-          <FeedListItem />
         </ScrollView>
       </View>
     </View>

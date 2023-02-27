@@ -36,6 +36,7 @@ const FeedListItem = ({navigation}) => {
         <View style={styles.contentWrapper}>
           <View style={styles.leftContentWrapper}>
             <Text style={styles.itemNameTextStyle}>Pancake</Text>
+            
             <Text numberOfLines={2}>
               Eggless pancake, 5 in numbers topped with some berries and maple
               syrup.
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
+  
   },
   distanceinforWrapper:{ flexDirection:'row', paddingTop:10, alignItems:'center'},
   distanceTextStyle:{paddingLeft:5, fontSize:theme.fontSizes.small, fontFamily: 'sans-serif', fontWeight:'bold'}
