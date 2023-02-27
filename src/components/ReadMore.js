@@ -21,4 +21,4 @@ const ReadMore = ({text, maxLength}) => {
 
 export default ReadMore;
 
-const textStyle = {fontFamily: 'sans-serif-condensed', fontSize: 12,color:'grey' ,paddingTop:5};
+const textStyle = {fontFamily: 'sans-serif-condensed', fontSize: 12,color:theme.colors.grey ,paddingTop:5};

@@ -10,7 +10,8 @@ export default {
       dark: '#343a40',
       white:"#FFFFFF",
       red:"#ff0000",
-      blue:"#C6E2FF"
+      blue:"#0000FF",
+      grey:"#808080"
     },
     fontSizes: {
       small: 12,

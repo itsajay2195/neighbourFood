@@ -54,12 +54,12 @@ const SubscribersAvatar = () => {
   return (
     <View style={SubscribersAvatarStyles.container}>
       {AVATAR.map((item, index) => (
-        <>
+        <View key={`subscriber-avatar-${item.key}`}>
           {index >=5 ? null : 
-          <View key={`subscriber-avatar-${index}`} style={SubscribersAvatarStyles.avatarWrapper}>
+          <View  style={SubscribersAvatarStyles.avatarWrapper}>
             <Avatar imgUrl={item.imgUrl} />
           </View>}
-        </>
+        </View>
       ))}
       {AVATAR.length > 5 ? <Text style={{paddingLeft:20,fontWeight:'bold', color:theme.colors.dark}}>{`+ ${AVATAR.length - 5} subscribers`}</Text> : null}
     </View>

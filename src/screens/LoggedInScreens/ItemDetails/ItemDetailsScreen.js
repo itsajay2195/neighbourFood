@@ -121,7 +121,7 @@ const ItemDetails = ({navigation}) => {
         </View>
 
         <TouchableOpacity style={{flex:0.5,borderRadius:10,backgroundColor:"blue", alignItems:'center', padding:8}}>
-          <Text style={{fontFamily:'sans-serif-condensed', fontSize:theme.fontSizes.medium, fontWeight:'700'}}>Add to Cart</Text>
+          <Text style={{fontFamily:'sans-serif-condensed', color:theme.colors.white,fontSize:theme.fontSizes.medium, fontWeight:'700'}}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -146,5 +146,5 @@ const ItemDetailsStyles = StyleSheet.create({
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
   },
-  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12,color:'grey'},
+  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12,color:theme.colors.grey},
 });
