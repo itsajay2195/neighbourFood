@@ -15,7 +15,8 @@ export default FollowButton
 const FollowButtonStyles = StyleSheet.create({
     container:{
         padding:10,
-        backgroundColor:theme.colors.blue,
+        // backgroundColor:theme.colors.blue,
+        backgroundColor:"blue",
         borderRadius:10
     },
     followTextStyle:{

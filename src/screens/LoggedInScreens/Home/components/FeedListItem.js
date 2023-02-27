@@ -37,21 +37,26 @@ const FeedListItem = ({navigation}) => {
           <View style={styles.leftContentWrapper}>
             <Text style={styles.itemNameTextStyle}>Pancake</Text>
             
-            <Text numberOfLines={2}>
+            {/* <Text style={{color:'grey'}} numberOfLines={2}>
               Eggless pancake, 5 in numbers topped with some berries and maple
               syrup.
-            </Text>
+            </Text> */}
 
             <View style={styles.distanceinforWrapper}>
               <Icon name="map-marker-alt" size={15} color={theme.colors.dark} />
-              <Text style={styles.distanceTextStyle}> 3 kms</Text>
+              <Text style={styles.distanceTextStyle}> 8 kms</Text>
+              {/* <Text style={{fontWeight:'700', fontSize:14, color:theme.colors.dark}}> 200 INR</Text> */}
+            </View>
+
+            <View>
+              <Text style={{fontWeight:'700', fontSize:14, color:theme.colors.dark}}> 200 INR</Text>
             </View>
           </View>
           <View style={styles.contentImageWrapper}>
             <Image
               style={styles.contentImageStyle}
               source={{
-                uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                uri: 'https://www.eatthis.com/wp-content/uploads/sites/4/2019/11/whole-grain-pancake-stack.jpg',
               }}
             />
             <View style={styles.priceWrapper}>
@@ -60,10 +65,10 @@ const FeedListItem = ({navigation}) => {
           </View>
         </View>
 
-        <View style={styles.tagsWrapper}>
+        {/* <View style={styles.tagsWrapper}>
           <Tags label="#food" onPress={() => console.log('Tag 1 pressed')} />
           <Tags label="#english" onPress={() => console.log('Tag 1 pressed')} />
-        </View>
+        </View> */}
 
         {/* //title
             //descrption 
@@ -72,11 +77,11 @@ const FeedListItem = ({navigation}) => {
             images
             */}
       </View>
-
+{/* 
       <View style={styles.indulgenceSectionWrapper}>
         <FavouriteIcon isFavourite={true} />
         <CommentIconWithCount commentCount={10} />
-      </View>
+      </View> */}
     </TouchableOpacity>
   );
 };
@@ -119,15 +124,15 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
   },
-  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12},
+  userPostDescStlye: {color:'grey',fontFamily: 'sans-serif-condensed', fontSize: 12},
   bodyWrapper: {
     flex: 0.8,
     display: 'flex',
     flexDirection: 'column',
-    paddingVertical: 10,
+    // paddingVertical: 10,
   },
   contentWrapper: {paddingVertical: 2, flexDirection: 'row', flex: 1},
-  leftContentWrapper: {flex: 0.7, justifyContent: 'center'},
+  leftContentWrapper: {flex: 0.7},
   headerWrapper: {paddingVertical: 2},
   itemNameTextStyle: {
     color: 'black',
@@ -156,8 +161,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: 'black',
-    opacity: 0.5,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // use rgba color to set the background to transparent black
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -167,8 +171,10 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
-  
-  },
+    textShadowColor: 'rgba(0, 0, 0, 1)', // add a black text shadow
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },  
   distanceinforWrapper:{ flexDirection:'row', paddingTop:10, alignItems:'center'},
-  distanceTextStyle:{paddingLeft:5, fontSize:theme.fontSizes.small, fontFamily: 'sans-serif', fontWeight:'bold'}
+  distanceTextStyle:{paddingLeft:5, color:theme.colors.dark,fontSize:theme.fontSizes.small, fontFamily: 'sans-serif', fontWeight:'bold'}
 });

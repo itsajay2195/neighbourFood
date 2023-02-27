@@ -13,11 +13,11 @@ export const AVATAR = [
     imgUrl:
       'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg',
   },
-  {
-    key: 3,
-    imgUrl:
-      'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?cs=srgb&dl=pexels-italo-melo-2379005.jpg&fm=jpg',
-  },
+  // {
+  //   key: 3,
+  //   imgUrl:
+  //     'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?cs=srgb&dl=pexels-italo-melo-2379005.jpg&fm=jpg',
+  // },
   {
     key: 4,
     imgUrl:

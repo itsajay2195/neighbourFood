@@ -30,9 +30,10 @@ const ItemDetails = ({navigation}) => {
           }}>
           <View style={ItemDetailsStyles.imageWrapper}>
             <Image
+              resizeMode="cover"
               style={ItemDetailsStyles.contentImageStyle}
               source={{
-                uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                uri: 'https://www.eatthis.com/wp-content/uploads/sites/4/2019/11/whole-grain-pancake-stack.jpg',
               }}
             />
           </View>
@@ -113,13 +114,13 @@ const ItemDetails = ({navigation}) => {
           <>
             {/* <Text>Total</Text> */}
             <Text
-              style={{fontSize: theme.fontSizes.medium, fontWeight: 'bold'}}>
+              style={{fontSize: theme.fontSizes.medium, fontWeight: 'bold', color:theme.colors.dark}}>
               10 INR
             </Text>
           </>
         </View>
 
-        <TouchableOpacity style={{flex:0.5,borderRadius:10,backgroundColor:theme.colors.blue, alignItems:'center', padding:8}}>
+        <TouchableOpacity style={{flex:0.5,borderRadius:10,backgroundColor:"blue", alignItems:'center', padding:8}}>
           <Text style={{fontFamily:'sans-serif-condensed', fontSize:theme.fontSizes.medium, fontWeight:'700'}}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
@@ -145,5 +146,5 @@ const ItemDetailsStyles = StyleSheet.create({
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
   },
-  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12},
+  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12,color:'grey'},
 });

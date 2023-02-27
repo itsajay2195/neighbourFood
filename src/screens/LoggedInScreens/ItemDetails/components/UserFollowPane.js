@@ -53,6 +53,7 @@ const UserFollowPaneStyles = StyleSheet.create({
   userNameandAvaterWrapper:{flexDirection: 'row', alignItems: 'center'},
   userNameTextStyle:{
     fontSize: theme.fontSizes.medium,
+    color:theme.colors.dark,
     fontWeight: 'bold',
     fontFamily: 'sans-serif-condensed',
     paddingLeft: 10,
