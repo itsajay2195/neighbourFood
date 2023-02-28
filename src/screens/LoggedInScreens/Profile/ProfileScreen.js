@@ -47,7 +47,7 @@ const renderItem = ({item}) => {
       <TouchableOpacity
         style={ProfileSyles.renderItemContainer}>
         <Icon name={item.name} size={24} color={'black'} />
-        <Text style={ProfileSyles.renderItemDescriptionTextStyle}>
+        <Text style={{ ...ProfileSyles.renderITemDescTextStyle,color:isDarkThemedOuterScope?theme.colors.white:theme.colors.black}}>
           {item.description}
         </Text>
       </TouchableOpacity>
@@ -150,5 +150,5 @@ const ProfileSyles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 4,
   },
-  renderItemDescriptionTextStyle:{paddingHorizontal: 10, fontSize: 18, color:isDarkThemedOuterScope?theme.colors.white:theme.colors.black}
+  renderITemDescTextStyle:{paddingHorizontal: 10, fontSize: 18,}
 });
