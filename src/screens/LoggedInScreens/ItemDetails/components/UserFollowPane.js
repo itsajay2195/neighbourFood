@@ -1,9 +1,16 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
+import React,{useMemo} from 'react';
 import theme from '../../../../styles/theme';
 import FollowButton from './FollowButton';
+import {useSelector} from 'react-redux';
 
 const UserFollowPane = () => {
+  const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  const darkThemedStyle = useMemo(() => {
+    return {
+      userNameTextStyle:{...UserFollowPaneStyles.userNameTextStyle, color:isDarkThemed ? theme.colors.white: theme.colors.dark}
+    };
+  }, [isDarkThemed]);
   return (
     <View style={UserFollowPaneStyles.userInfoWarapper}>
       <View style={UserFollowPaneStyles.userNameandAvaterWrapper}>
@@ -16,7 +23,7 @@ const UserFollowPane = () => {
           />
         </View>
         <Text
-          style={UserFollowPaneStyles.userNameTextStyle}>
+          style={darkThemedStyle.userNameTextStyle}>
           Prabhu
         </Text>
       </View>
@@ -53,7 +60,6 @@ const UserFollowPaneStyles = StyleSheet.create({
   userNameandAvaterWrapper:{flexDirection: 'row', alignItems: 'center'},
   userNameTextStyle:{
     fontSize: theme.fontSizes.medium,
-    color:theme.colors.dark,
     fontWeight: 'bold',
     fontFamily: 'sans-serif-condensed',
     paddingLeft: 10,

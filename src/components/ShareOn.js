@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import theme from '../styles/theme';
+import { useSelector } from 'react-redux';
 
 const PLATFORMS = [
   {id: 1, iconName: 'facebook'},
@@ -10,6 +11,7 @@ const PLATFORMS = [
 ];
 
 const ShareOn = () => {
+  const isDarkThemed = useSelector(state=>state.appState.isDarkThemed)
   return (
     <View >
       {/* <Text>ShareOn</Text> */}
@@ -18,7 +20,7 @@ const ShareOn = () => {
           <TouchableOpacity
             key={`platform-${index}`}
             style={ShareOnStyles.avatarContainer}>
-            <Icon name={item.iconName} size={18} color={theme.colors.dark} />
+            <Icon name={item.iconName} size={18} color={isDarkThemed? theme.colors.white:theme.colors.dark} />
           </TouchableOpacity>
         ))}
       </View>

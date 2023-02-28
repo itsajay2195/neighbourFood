@@ -28,7 +28,7 @@ const SwitchItem = () => {
     <View
       style={ProfileSyles.toggleContainer}>
       <Text style={{...ProfileSyles.themeNameTextStyle,color:isDarkThemed ? theme.colors.white : theme.colors.dark}}>
-        {isDarkThemed ? 'Light' : 'Dark'}
+        {isDarkThemed ? 'Light Mode' : 'Dark Mode'}
       </Text>
       <Switch
         trackColor={{false: 'black', true: 'grey'}}

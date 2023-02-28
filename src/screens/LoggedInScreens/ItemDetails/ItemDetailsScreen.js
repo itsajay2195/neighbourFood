@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React,{useMemo} from 'react';
 import styles from '../../../styles/styles';
 import BackButton from '../../../components/BackButton';
 import UserFollowPane from './components/UserFollowPane';
@@ -15,19 +15,34 @@ import theme from '../../../styles/theme';
 import SubscribersAvatar from './components/SubscribersAvatar';
 import ReadMore from '../../../components/ReadMore';
 import ShareOn from '../../../components/ShareOn';
+import {useSelector} from 'react-redux';
 
 const ItemDetails = ({navigation}) => {
+  const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  const darkThemedStyle = useMemo(() => {
+    return {
+      container: {
+        ...styles.container,
+        backgroundColor: isDarkThemed ? theme.colors.dark : theme.colors.white,
+      },
+      imageWrapperContainer:{...ItemDetailsStyles.imageWrapperContainer,
+        backgroundColor: isDarkThemed ? theme.colors.dark : theme.colors.white,
+      },
+      itemNameTextStyle:{...ItemDetailsStyles.itemNameTextStyle,
+        color: isDarkThemed ? theme.colors.white : theme.colors.grey,
+      },
+      contentWrapper:{...ItemDetailsStyles.contentWrapper, backgroundColor: isDarkThemed ? theme.colors.dark: theme.colors.white},
+      userPostDescStlye:{...ItemDetailsStyles.userPostDescStlye, color: isDarkThemed ? theme.colors.white : theme.colors.black,},
+      itemNameTextStyle:{...ItemDetailsStyles.itemNameTextStyle, color: isDarkThemed ? theme.colors.white : theme.colors.black,},
+    };
+  }, [isDarkThemed]);
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={darkThemedStyle.container}>
       <BackButton  navigation={navigation}/>
-      <ScrollView contentContainerStyle={{flex: 1}}>
+      <ScrollView   contentContainerStyle={ItemDetailsStyles.scrollViewContentContainerStyle}>
+        
         <View
-          style={{
-            flex: 0.5,
-            backgroundColor: theme.colors.light,
-            borderBottomLeftRadius: 20,
-            borderBottomRightRadius: 20,
-          }}>
+          style={darkThemedStyle.imageWrapperContainer}>
           <View style={ItemDetailsStyles.imageWrapper}>
             <Image
               resizeMode="cover"
@@ -48,30 +63,37 @@ const ItemDetails = ({navigation}) => {
           </View>
         </View>
         <View
-          style={{
-            flex: 0.5,
-            backgroundColor: theme.colors.white,
-            paddingHorizontal: 20,
-          }}>
-          <View style={{paddingVertical: 5}}>
+          style={darkThemedStyle.contentWrapper}>
+          <View style={ItemDetailsStyles.paddingVertical}>
             {/* title */}
-            <Text style={ItemDetailsStyles.itemNameTextStyle}>Pancake</Text>
+            <Text style={darkThemedStyle.itemNameTextStyle}>Pancake</Text>
             {/* date and time of posting */}
-            <Text style={ItemDetailsStyles.userPostDescStlye}>
+            <Text style={darkThemedStyle.userPostDescStlye}>
               December 12, 2022
             </Text>
           </View>
 
-          <View style={{paddingVertical: 5}}>
+          <View style={ItemDetailsStyles.paddingVertical}>
             {/* subscribers- title */}
-            <Text style={ItemDetailsStyles.itemNameTextStyle}>Subscribers</Text>
+            <Text style={darkThemedStyle.itemNameTextStyle}>Subscribers</Text>
             {/* subscrivers Avaatar */}
             <SubscribersAvatar />
           </View>
 
-          <View style={{paddingVertical: 5}}>
+          <View style={ItemDetailsStyles.paddingVertical}>
             {/* Description- title */}
-            <Text style={ItemDetailsStyles.itemNameTextStyle}>Description</Text>
+            <Text style={darkThemedStyle.itemNameTextStyle}>Description</Text>
+            {/* item description */}
+            <ReadMore
+              text={
+                'Eggless pancake, 5 in numbers topped with some berries and maple syrup.Eggless pancake, 5 in numbers topped with some berries and maple syrup. Eggless pancake, 5 in numbers topped with some berries and maple syrup.Eggless pancake, 5 in numbers topped with some berries and maple syrup.'
+              }
+              maxLength={100}
+            />
+          </View>
+          <View style={ItemDetailsStyles.paddingVertical}>
+            {/* Description- title */}
+            <Text style={darkThemedStyle.itemNameTextStyle}>Description</Text>
             {/* item description */}
             <ReadMore
               text={
@@ -81,8 +103,8 @@ const ItemDetails = ({navigation}) => {
             />
           </View>
 
-          <View style={{paddingVertical: 5}}>
-            <Text style={ItemDetailsStyles.itemNameTextStyle}>Share On</Text>
+          <View style={{paddingVertical: 10}}>
+            <Text style={darkThemedStyle.itemNameTextStyle}>Share On</Text>
             <ShareOn />
           </View>
         </View>
@@ -146,5 +168,16 @@ const ItemDetailsStyles = StyleSheet.create({
     fontSize: theme.fontSizes.medium,
     fontWeight: 'bold',
   },
-  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12,color:theme.colors.grey},
+  userPostDescStlye: {fontFamily: 'sans-serif-condensed', fontSize: 12,color:theme.colors.dark},
+  imageWrapperContainer:{
+    flex: 2.5,
+    backgroundColor: theme.colors.light,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  contentWrapper:{
+    flex: 0.5,
+    paddingHorizontal: 20,
+  },paddingVertical:{paddingVertical: 10},
+  scrollViewContentContainerStyle:{flexGrow: 1, paddingBottom:60}
 });
