@@ -1,58 +1,69 @@
 import {StyleSheet, Text, View, Image, FlatList, Switch} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../../../styles/styles';
 import theme from '../../../styles/theme';
 import BackButton from '../../../components/BackButton';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {useSelector} from 'react-redux';
 
 const PROFILESECTIONSDATA = [
-  {type: 'ICON', id: 1, name: 'user-shield', description: 'My MemberShip'},
+  {type: 'ICON', id: 1, name: 'user-shield', description: 'My Membership'},
   {type: 'ICON', id: 2, name: 'envelope', description: 'Contact us'},
   {type: 'ICON', id: 3, name: 'file-alt', description: 'Terns and Conditions'},
   {type: 'ICON', id: 4, name: 'sign-out-alt', description: 'Logout'},
   {type: 'TOGGLE', id: 5, name: null, description: 'Theme'},
 ];
 
+const SwitchItem = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  return (
+    <Switch
+      trackColor={{false: 'black', true: 'grey'}}
+      thumbColor={isEnabled ? theme.colors.grey : theme.colors.dark}
+      ios_backgroundColor="#3e3e3e"
+      onValueChange={toggleSwitch}
+      value={isEnabled}
+    />
+  );
+};
+
 const renderItem = ({item}) => {
-  if(item.type === "ICON"){
-    return(  <View
-      style={{
-        flexDirection: 'row',
-        paddingVertical: 10,
-        paddingHorizontal: 4,
-      }}>
-      <Icon name={item.name} size={24} color={'black'} />
-      <Text style={{paddingHorizontal: 10, fontSize: 18}}>
-        {item.description}
-      </Text>
-    </View>)
+  if (item.type === 'ICON') {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          paddingVertical: 10,
+          paddingHorizontal: 4,
+        }}>
+        <Icon name={item.name} size={24} color={'black'} />
+        <Text style={{paddingHorizontal: 10, fontSize: 18}}>
+          {item.description}
+        </Text>
+      </View>
+    );
   }
 
-  if(item.type === "TOGGLE"){
-    return(  <View
-      style={{
-        flex:1,
-        flexDirection: 'row',
-        justifyContent:'space-between',
-        paddingVertical: 10,
-        paddingHorizontal: 4,
-      }}>
-      <Text style={{paddingHorizontal: 0, fontSize: 18}}>
-        {"Dark"}
-      </Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={true ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        // onValueChange={toggleSwitch}
-        value={false}
-      />
-    </View>)
+  if (item.type === 'TOGGLE') {
+    return (
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingVertical: 10,
+          paddingHorizontal: 4,
+        }}>
+        <Text style={{paddingHorizontal: 0, fontSize: 18}}>{'Dark'}</Text>
+        <SwitchItem/>
+      </View>
+    );
   }
-
 };
 
 const ProfileScreen = ({navigation}) => {
+  const count = useSelector(state => state.appState.isDarkThemed);
   return (
     <View style={styles.container}>
       <BackButton navigation={navigation} />
