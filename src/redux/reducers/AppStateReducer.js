@@ -1,13 +1,13 @@
 const initialState = {
   loading: false,
-  isDarkThemed: true,
+  isDarkThemed: false,
 };
 
 let appStateReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CHANGE_THEME_ACTION':
       let newState = {...state};
-      newState = {...initialState, isDakThemed: action.payload.isDakThemed};
+      newState = {...initialState, isDarkThemed: !state.isDarkThemed};
       return newState;
 
     default:

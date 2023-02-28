@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View, Image, FlatList, Switch} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, Text, View, Image, FlatList, Switch, TouchableOpacity} from 'react-native';
+import React, {useState, useMemo} from 'react';
 import styles from '../../../styles/styles';
 import theme from '../../../styles/theme';
 import BackButton from '../../../components/BackButton';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 const PROFILESECTIONSDATA = [
   {type: 'ICON', id: 1, name: 'user-shield', description: 'My Membership'},
@@ -14,58 +14,64 @@ const PROFILESECTIONSDATA = [
   {type: 'TOGGLE', id: 5, name: null, description: 'Theme'},
 ];
 
+let isDarkThemedOuterScope;
 const SwitchItem = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const dispatch = useDispatch();
+  const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  const [isEnabled, setIsEnabled] = useState(isDarkThemed);
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+    dispatch({type: 'CHANGE_THEME_ACTION'});
+  };
+
   return (
-    <Switch
-      trackColor={{false: 'black', true: 'grey'}}
-      thumbColor={isEnabled ? theme.colors.grey : theme.colors.dark}
-      ios_backgroundColor="#3e3e3e"
-      onValueChange={toggleSwitch}
-      value={isEnabled}
-    />
+    <View
+      style={ProfileSyles.toggleContainer}>
+      <Text style={{...ProfileSyles.themeNameTextStyle,color:isDarkThemed ? theme.colors.white : theme.colors.dark}}>
+        {isDarkThemed ? 'Light' : 'Dark'}
+      </Text>
+      <Switch
+        trackColor={{false: 'black', true: 'grey'}}
+        thumbColor={isEnabled ? theme.colors.grey : theme.colors.dark}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </View>
   );
 };
 
 const renderItem = ({item}) => {
   if (item.type === 'ICON') {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          paddingVertical: 10,
-          paddingHorizontal: 4,
-        }}>
+      <TouchableOpacity
+        style={ProfileSyles.renderItemContainer}>
         <Icon name={item.name} size={24} color={'black'} />
-        <Text style={{paddingHorizontal: 10, fontSize: 18}}>
+        <Text style={ProfileSyles.renderItemDescriptionTextStyle}>
           {item.description}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 
   if (item.type === 'TOGGLE') {
-    return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingVertical: 10,
-          paddingHorizontal: 4,
-        }}>
-        <Text style={{paddingHorizontal: 0, fontSize: 18}}>{'Dark'}</Text>
-        <SwitchItem/>
-      </View>
-    );
+    return <SwitchItem />;
   }
 };
 
 const ProfileScreen = ({navigation}) => {
-  const count = useSelector(state => state.appState.isDarkThemed);
+  const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  isDarkThemedOuterScope=isDarkThemed;
+  const darkThemedContainerStlye = useMemo(() => {
+    return {
+      container: {
+        ...styles.container,
+        backgroundColor: isDarkThemed ? theme.colors.dark : theme.colors.white,
+      },
+    };
+  }, [isDarkThemed]);
   return (
-    <View style={styles.container}>
+    <View style={darkThemedContainerStlye.container}>
       <BackButton navigation={navigation} />
       <View style={ProfileSyles.profilePicWrapper}>
         <View style={ProfileSyles.profilePicContainer}>
@@ -131,4 +137,18 @@ const ProfileSyles = StyleSheet.create({
   },
   avatarImageStyle: {height: '100%', width: '100%', borderRadius: 100},
   profileInfoSection: {flex: 0.6},
+  toggleContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+  },
+  themeNameTextStyle:{paddingHorizontal: 0, fontSize: 18},
+  renderItemContainer:{
+    flexDirection: 'row',
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+  },
+  renderItemDescriptionTextStyle:{paddingHorizontal: 10, fontSize: 18, color:isDarkThemedOuterScope?theme.colors.white:theme.colors.black}
 });

@@ -1,17 +1,25 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import React,{useMemo} from 'react';
 import theme from '../styles/theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import SearchBar from './SearchBar';
 import { LOGGED_IN_SCREEN_NAME } from '../constants/ScreenConstants';
+import { useSelector } from 'react-redux';
 
 const Header = ({navigation}) => {
+  const isDarkTheme = useSelector(state=>state.appState.isDarkThemed);
+
+  const darkThemedContainerStlye=  useMemo(()=>{
+    return({
+      container:{...styles.container,  backgroundColor: isDarkTheme ? theme.colors.dark :theme.colors.white , }
+    })
+  },[isDarkTheme])
   const handleSearch = text => {
     setSearchQuery(text);
     // Perform search logic here
   };
   return (
-    <View style={styles.container}>
+    <View style={darkThemedContainerStlye.container}>
       <View style={{flex: 0.1, alignItems:'center'}}>
         <View style={styles.iconWrapper}>
           <Icon  name="form" size={15} color="blue" />

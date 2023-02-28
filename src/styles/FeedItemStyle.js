@@ -33,7 +33,7 @@ export const FeedItemLightstyles = StyleSheet.create({
       paddingHorizontal: 5,
     },
     userNameStyle: {
-      color: 'black',
+      color: theme.colors.black,
       fontFamily: 'sans-serif',
       fontSize: theme.fontSizes.medium,
       fontWeight: 'bold',
@@ -49,7 +49,7 @@ export const FeedItemLightstyles = StyleSheet.create({
     leftContentWrapper: {flex: 0.7},
     headerWrapper: {paddingVertical: 2},
     itemNameTextStyle: {
-      color: 'black',
+      color: theme.colors.black,
       fontFamily: 'sans-serif',
       fontSize: theme.fontSizes.medium,
       fontWeight: 'bold',
@@ -130,7 +130,7 @@ export const FeedItemLightstyles = StyleSheet.create({
       paddingHorizontal: 5,
     },
     userNameStyle: {
-      color: 'black',
+      color: theme.colors.white,
       fontFamily: 'sans-serif',
       fontSize: theme.fontSizes.medium,
       fontWeight: 'bold',
@@ -146,7 +146,7 @@ export const FeedItemLightstyles = StyleSheet.create({
     leftContentWrapper: {flex: 0.7},
     headerWrapper: {paddingVertical: 2},
     itemNameTextStyle: {
-      color: 'black',
+      color: theme.colors.white,
       fontFamily: 'sans-serif',
       fontSize: theme.fontSizes.medium,
       fontWeight: 'bold',
