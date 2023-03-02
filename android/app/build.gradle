@@ -223,10 +223,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storeFile file('myfirebase.keystore')
+            storePassword 'hari115165'
+            keyAlias 'ajalias'
+            keyPassword 'hari115165'
         }
     }
     buildTypes {
@@ -264,8 +264,10 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
+    
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation platform('com.google.firebase:firebase-bom:31.2.2')
+    implementation 'com.google.firebase:firebase-analytics'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
@@ -309,7 +311,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-
+apply plugin: "com.google.gms.google-services"
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:
     // - Set `newArchEnabled` to true inside the `gradle.properties` file

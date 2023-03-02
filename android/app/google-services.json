@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "476622320202",
+    "project_id": "naberfood",
+    "storage_bucket": "naberfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476622320202:android:022e13aa7cbccf4db2acb3",
+        "android_client_info": {
+          "package_name": "com.neighbourfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476622320202-cjqjjo1jomesscob5ujtgg673fa7mbc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neighbourfood",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "476622320202-28mice8ga7jurhm2ifvu3khir6mvober.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA66AgsbtvcQ_9TVq8HlRa5JbuRMBV8IO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476622320202-28mice8ga7jurhm2ifvu3khir6mvober.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
