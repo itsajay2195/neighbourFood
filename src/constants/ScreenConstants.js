@@ -3,6 +3,7 @@ export const LOGGED_IN_SCREEN_NAME={
     profile:"Profile",
     itemDetails:"ItemDetails",
     splash:"Splash",
+    userDayMenu:"UserDayMenu"
 }
 
 export const AUTH_SCREEN_NAME={
@@ -10,5 +11,6 @@ export const AUTH_SCREEN_NAME={
     signUp:"SignUp",
     register:"Register",
     splash:"Splash",
+  
 }
 

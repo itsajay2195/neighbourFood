@@ -8,6 +8,7 @@ import ItemDetails from '../screens/LoggedInScreens/ItemDetails/ItemDetailsScree
 import React from 'react'
 import SplashScreen from '../screens/LoggedInScreens/SplashScreen/SplashScreen';
 import { AUTH_SCREEN_NAME, LOGGED_IN_SCREEN_NAME } from '../constants/ScreenConstants';
+import UserDayMenu from '../screens/LoggedInScreens/UserDayMenu/UserDayMenu';
 
 
 const LoggedInStack = createNativeStackNavigator();
@@ -19,6 +20,7 @@ export function LoggedInStackNavigator() {
       <LoggedInStack.Screen name={LOGGED_IN_SCREEN_NAME.home} component={HomeScreen}  options={{headerShown: false}} />
       <LoggedInStack.Screen name={LOGGED_IN_SCREEN_NAME.profile} component={ProfileScreen}   options={{headerShown: false}}/>
       <LoggedInStack.Screen name={LOGGED_IN_SCREEN_NAME.itemDetails} component={ItemDetails}   options={{headerShown: false}}/>
+      <LoggedInStack.Screen name={LOGGED_IN_SCREEN_NAME.userDayMenu} component={UserDayMenu}   options={{headerShown: false}}/>
     </LoggedInStack.Navigator>
   );
 }

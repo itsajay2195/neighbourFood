@@ -20,7 +20,7 @@ const SplashScreen = ({navigation}) => {
       duration: 2000,
       useNativeDriver: true,
     }).start();
-  }, );
+  }, [animationValue]);
 
   const translateX = animationValue.interpolate({
     inputRange: [0, 1],

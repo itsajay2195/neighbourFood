@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Image, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import theme from '../../../../styles/theme';
 import {useSelector} from 'react-redux';
@@ -18,14 +18,14 @@ const FeedListItem = ({navigation}) => {
       }}
       style={isDarkTheme? FeedItemDarkstyles.container : FeedItemLightstyles.container}>
       <View style={isDarkTheme?  FeedItemDarkstyles.userInfoWarapper : FeedItemLightstyles.userInfoWarapper}>
-        <View style={ isDarkTheme? FeedItemDarkstyles.userAvaterWrapper: FeedItemLightstyles.userAvaterWrapper}>
+        <TouchableOpacity onPress={()=> navigation.navigate(LOGGED_IN_SCREEN_NAME.userDayMenu)} style={ isDarkTheme? FeedItemDarkstyles.userAvaterWrapper: FeedItemLightstyles.userAvaterWrapper}>
           <Image
             style={FeedItemLightstyles.userAvatarStyle}
             source={{
               uri: 'https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=',
             }}
           />
-        </View>
+        </TouchableOpacity>
 
         <View style={isDarkTheme? FeedItemDarkstyles.userNameSectionWrapper :FeedItemLightstyles.userNameSectionWrapper }>
           <Text style={isDarkTheme?FeedItemDarkstyles.userNameStyle :FeedItemLightstyles.userNameStyle}>Prabu </Text>
