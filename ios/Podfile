@@ -20,6 +20,7 @@ target 'neighbourFood' do
   )
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'GoogleUtilities', :modular_headers => true
 
   target 'neighbourFoodTests' do
     inherit! :complete
