@@ -6,14 +6,27 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect,useMemo} from 'react';
 import BackButton from '../../../components/BackButton';
 import styles from '../../../styles/styles';
 import theme from '../../../styles/theme';
 import {foods1} from '../../../constants/data';
+import {useSelector} from 'react-redux';
 
 const UserDayMenu = ({navigation}) => {
   const animationRef = useRef(null);
+  const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  const darkThemedStyle = useMemo(() => {
+    return {
+      container: {
+        ...UserDayMenuStyles.container,
+        backgroundColor: isDarkThemed ? theme.colors.dark : theme.colors.white,
+      },
+      userNameTextStyle:{...UserDayMenuStyles.userNameTextStyle, color: isDarkThemed ? theme.colors.white : theme.colors.dark},
+      flatListHeaderText:{...UserDayMenuStyles.flatListHeaderText, color: isDarkThemed ? theme.colors.white : theme.colors.dark}
+    };
+  }, [isDarkThemed]);
+
 
   useEffect(() => {
     if (animationRef.current) {
@@ -29,21 +42,21 @@ const UserDayMenu = ({navigation}) => {
           style={UserDayMenuStyles.renderITemImageStyle}
           source={{uri: item.imageUrl}}
         />
-        <Text>{item.name}</Text>
+        <Text style={{color: isDarkThemed ? theme.colors.white : theme.colors.dark}}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
 
   const ListHeaderComponent=()=>(
     <View >
-      <Text style={UserDayMenuStyles.flatListHeaderText}>
+      <Text style={darkThemedStyle.flatListHeaderText}>
       Today's savory sensations
       </Text>
     </View>
   )
 
   return (
-    <View style={UserDayMenuStyles.container}>
+    <View style={darkThemedStyle.container}>
       <BackButton navigation={navigation} />
       <View
         style={UserDayMenuStyles.userINfoWrapper}>
@@ -65,7 +78,7 @@ const UserDayMenu = ({navigation}) => {
           />
 
           <Text
-            style={UserDayMenuStyles.userNameTextStyle}>
+            style={darkThemedStyle.userNameTextStyle}>
             Prabhu
           </Text>
         </View>
@@ -77,6 +90,7 @@ const UserDayMenu = ({navigation}) => {
           numColumns={2}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
+          StickyHeaderComponent
         />
       </View>
     </View>
@@ -86,7 +100,7 @@ const UserDayMenu = ({navigation}) => {
 export default UserDayMenu;
 
 const UserDayMenuStyles = StyleSheet.create({
-  container: {...styles.container, backgroundColor: 'white'},
+  container: {...styles.container, backgroundColor: theme.colors.white},
   renderItemWrapper:{
     padding: 30,
     height: 100,
