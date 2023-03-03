@@ -23,7 +23,8 @@ const UserDayMenu = ({navigation}) => {
         backgroundColor: isDarkThemed ? theme.colors.dark : theme.colors.white,
       },
       userNameTextStyle:{...UserDayMenuStyles.userNameTextStyle, color: isDarkThemed ? theme.colors.white : theme.colors.dark},
-      flatListHeaderText:{...UserDayMenuStyles.flatListHeaderText, color: isDarkThemed ? theme.colors.white : theme.colors.dark}
+      flatListHeaderText:{...UserDayMenuStyles.flatListHeaderText, color: isDarkThemed ? theme.colors.white : theme.colors.dark},
+      renderItemTextStyle:{ padding:5,color: isDarkThemed ? theme.colors.white : theme.colors.dark}
     };
   }, [isDarkThemed]);
 
@@ -39,10 +40,11 @@ const UserDayMenu = ({navigation}) => {
       <TouchableOpacity
         style={UserDayMenuStyles.renderItemWrapper}>
         <Image
+        resizeMode={"contain"}
           style={UserDayMenuStyles.renderITemImageStyle}
           source={{uri: item.imageUrl}}
         />
-        <Text style={{color: isDarkThemed ? theme.colors.white : theme.colors.dark}}>{item.name}</Text>
+        <Text style={darkThemedStyle.renderItemTextStyle}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
@@ -72,6 +74,7 @@ const UserDayMenu = ({navigation}) => {
           /> */}
           <Image
             style={UserDayMenuStyles.userAvaterStyle}
+            resizeMode={"contain"}
             source={{
               uri: 'https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=',
             }}
@@ -103,7 +106,7 @@ const UserDayMenuStyles = StyleSheet.create({
   container: {...styles.container, backgroundColor: theme.colors.white},
   renderItemWrapper:{
     padding: 30,
-    height: 100,
+    height: 130,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -121,5 +124,5 @@ const UserDayMenuStyles = StyleSheet.create({
     fontSize: theme.fontSizes.medium,
     fontWeight: '700',
     fontFamily: 'sans-serif-condensed',
-  }
+  },
 });

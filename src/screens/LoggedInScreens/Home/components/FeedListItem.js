@@ -65,6 +65,7 @@ const FeedListItem = ({navigation}) => {
           <View style={isDarkTheme?FeedItemDarkstyles.contentImageWrapper :FeedItemLightstyles.contentImageWrapper}>
             <Image
               style={isDarkTheme?FeedItemDarkstyles.contentImageStyle :FeedItemLightstyles.contentImageStyle}
+              resizeMode={"contain"}
               source={{
                 uri: 'https://www.eatthis.com/wp-content/uploads/sites/4/2019/11/whole-grain-pancake-stack.jpg',
               }}
