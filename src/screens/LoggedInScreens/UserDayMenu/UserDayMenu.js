@@ -13,9 +13,13 @@ import theme from '../../../styles/theme';
 import {foods1} from '../../../constants/data';
 import {useSelector} from 'react-redux';
 
+
+const keyExtractor = (item) => item.id.toString();
+
 const UserDayMenu = ({navigation}) => {
   const animationRef = useRef(null);
   const isDarkThemed = useSelector(state => state.appState.isDarkThemed);
+  const stickyHeaderIndices = [0];
   const darkThemedStyle = useMemo(() => {
     return {
       container: {
@@ -50,12 +54,13 @@ const UserDayMenu = ({navigation}) => {
   };
 
   const ListHeaderComponent=()=>(
-    <View >
+    <View style={{backgroundColor:theme.colors.white}}>
       <Text style={darkThemedStyle.flatListHeaderText}>
       Today's savory sensations
       </Text>
     </View>
   )
+
 
   return (
     <View style={darkThemedStyle.container}>
@@ -91,9 +96,10 @@ const UserDayMenu = ({navigation}) => {
           data={foods1}
           ListHeaderComponent={ListHeaderComponent}
           numColumns={2}
+          columnWrapperStyle={{ justifyContent: 'space-between' }}
           renderItem={renderItem}
-          keyExtractor={item => item.id.toString()}
-          StickyHeaderComponent
+          keyExtractor={keyExtractor}
+          stickyHeaderIndices={stickyHeaderIndices}
         />
       </View>
     </View>

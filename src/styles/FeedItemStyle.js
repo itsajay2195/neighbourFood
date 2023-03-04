@@ -45,7 +45,7 @@ export const FeedItemLightstyles = StyleSheet.create({
       flexDirection: 'column',
       padding: 10,
     },
-    contentWrapper: {paddingVertical: 2, flexDirection: 'row', flex: 1},
+    contentWrapper: {paddingVertical: 2, flexDirection: 'row', flex: 1,},
     leftContentWrapper: {flex: 0.7},
     headerWrapper: {paddingVertical: 2},
     itemNameTextStyle: {
@@ -56,7 +56,7 @@ export const FeedItemLightstyles = StyleSheet.create({
     },
     contentImageWrapper: {
       flex: 0.3,
-      height: 100,
+      height: "100%",
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
